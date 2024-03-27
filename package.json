@@ -1,0 +1,9 @@
+{
+  "name": "cypress_automation",
+  "devDependencies": {
+    "cypress": "^13.7.1"
+  },
+  "scripts": {
+    "cy:run": "cypress run"
+  }
+}
