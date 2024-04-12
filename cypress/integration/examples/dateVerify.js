@@ -7,7 +7,7 @@ describe("My date verify test", () => {
     const year = "2027";
     const expectedList = [month, date, year];
 
-    cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/offers");
+    cy.visit(Cypress.env("url") + "/seleniumPractise/#/offers");
     cy.get("button.react-date-picker__calendar-button").click();
     cy.get(".react-calendar__navigation__label").click().click();
     cy.contains("button", year).click();

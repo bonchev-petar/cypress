@@ -15,7 +15,7 @@ describe("My Fourth Test Suite", () => {
     const pp = new ProductsPage();
     const country = "Bulgaria";
 
-    cy.visit("https://rahulshettyacademy.com/angularpractice/");
+    cy.visit(Cypress.env("url") + "/angularpractice/");
 
     hp.getNameBox().type(this.regData.name);
     hp.getGenderDropdown().select(this.regData.gender);
@@ -34,7 +34,23 @@ describe("My Fourth Test Suite", () => {
     this.regData.productName.forEach((product) => {
       cy.selectProduct(product);
     });
+
     pp.getCheckoutBtn().click();
+    let finalResult = 0;
+    cy.get("tr td:nth-child(4) strong")
+      .each((el, index) => {
+        let amount = Number(el.text().split(" ")[1]);
+        finalResult += amount;
+        cy.log(amount);
+      })
+      .then(function () {
+        cy.log(finalResult);
+        cy.get("h3 strong").then((el) => {
+          const total = Number(el.text().split(" ")[1]);
+          expect(total).to.equal(finalResult);
+        });
+      });
+
     cy.get("button.btn-success").click();
     cy.get("#country").type(country);
     cy.get("div.suggestions a").eq(0).click();
@@ -47,11 +63,12 @@ describe("My Fourth Test Suite", () => {
       "contain.text",
       "Success! Thank you! Your order will be delivered in next few weeks :-)."
     );
-    // cy.get("div.alert-success").then((el) => {
-    //   const alertText = el.text();
-    //   expect(alertText).to.contain(
-    //     "Success! Thank you! Your order will be delivered in next few weeks :-)."
-    //   );
-    // });
+
+    cy.get("div.alert-success").then((el) => {
+      const alertText = el.text();
+      expect(alertText).to.contain(
+        "Success! Thank you! Your order will be delivered in next few weeks :-)."
+      );
+    });
   });
 });
