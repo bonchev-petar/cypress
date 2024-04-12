@@ -4,7 +4,7 @@ import "cypress-iframe";
 
 describe("My hover Test", () => {
   it("Visits the Automation Practice", () => {
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice/");
+    cy.visit(Cypress.env("url") + "/AutomationPractice/");
 
     cy.frameLoaded("#courses-iframe");
 

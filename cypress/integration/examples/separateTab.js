@@ -2,7 +2,7 @@
 /// <reference types="Cypress" />
 describe("My Fifth Test Suite - Automation practice", () => {
   it("Visits child window", () => {
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice/");
+    cy.visit(Cypress.env("url") + "/AutomationPractice/");
 
     cy.get("#opentab").invoke("removeAttr", "target").click();
     cy.origin("https://www.qaclickacademy.com", () => {
