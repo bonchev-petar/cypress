@@ -11,7 +11,7 @@ describe("My table Test", () => {
           .next()
           .then((price) => {
             const priceText = price.text();
-            expect(priceText).eq("25");
+            expect(priceText).eq("26");
           });
       }
     });

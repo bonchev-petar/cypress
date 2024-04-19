@@ -2,9 +2,22 @@
   "name": "cypress_automation",
   "devDependencies": {
     "cypress": "^13.7.1",
+    "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-iframe": "^1.0.1"
   },
   "scripts": {
-    "cy:run": "cypress run"
+    "test": "npx cypress run",
+    "headTest": "npm run test -- --headed"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "json": {
+      "enabled": true,
+      "formatter": "./cucumber-json-formatter",
+      "output": "cypress/jsonLogs/report.json"
+    }
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.3"
   }
 }

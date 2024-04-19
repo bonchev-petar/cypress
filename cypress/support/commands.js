@@ -5,6 +5,15 @@ Cypress.Commands.add("selectProduct", (productName) => {
     }
   });
 });
+Cypress.Commands.add("loginAPI", () => {
+  cy.request("POST", "https://rahulshettyacademy.com/api/ecom/auth/login", {
+    userEmail: "convertobonchev@gmail.com",
+    userPassword: "Converto123",
+  }).then(function (res) {
+    expect(res.status).to.equal(200);
+    Cypress.env("token", res.body.token);
+  });
+});
 
 // ***********************************************
 // This example commands.js shows you how to
