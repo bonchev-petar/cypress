@@ -1,11 +1,11 @@
 {
   "name": "cypress_automation",
   "devDependencies": {
+    "convert-excel-to-json": "1.7.0",
     "cypress": "^13.7.1",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-iframe": "^1.0.1",
-    "neat-csv": "5.1.0",
-    "convert-excel-to-json": "1.7.0"
+    "neat-csv": "5.1.0"
   },
   "scripts": {
     "test": "npx cypress run",
@@ -20,6 +20,7 @@
     }
   },
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^20.0.3"
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.3",
+    "exceljs": "^4.4.0"
   }
 }
